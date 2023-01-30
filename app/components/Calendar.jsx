@@ -4,6 +4,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid';
 import {
   add,
   eachDayOfInterval,
+  endOfWeek,
   endOfMonth,
   format,
   getDay,
@@ -13,6 +14,7 @@ import {
   isToday,
   parse,
   parseISO,
+  startOfWeek,
   startOfToday,
 } from 'date-fns';
 import { Fragment, useState } from 'react';
@@ -73,8 +75,8 @@ export default function Calendar() {
   let firstDayNextMonth = add(firstDayCurrentMonth, { months: +1 });
 
   let days = eachDayOfInterval({
-    start: firstDayCurrentMonth,
-    end: endOfMonth(firstDayCurrentMonth),
+    start: startOfWeek(firstDayCurrentMonth),
+    end: endOfWeek(endOfMonth(firstDayCurrentMonth)),
   });
 
   function previousMonth() {
@@ -95,10 +97,11 @@ export default function Calendar() {
         <div className="md:grid md:grid-cols-2 md:divide-x md:divide-gray-200">
           <div className="md:pr-14">
             <div className="">
-              <div className="flex items-center justify-center">
-                <div className="grid place-content-end">
-                  <h2>{format(firstDayCurrentMonth, 'yyy')}</h2>
-                </div>
+              <div className="grid grid-rows-2 justify-items-end">
+                <h2 className="text-4xl">
+                  {format(firstDayCurrentMonth, 'yyy')}
+                </h2>
+                <h2>Time Placeholder</h2>
               </div>
               <div className="flex items-center">
                 <h2 className="flex-auto font-semibold text-gray-400">
@@ -137,7 +140,7 @@ export default function Calendar() {
               <div>FRI</div>
               <div>SAT</div>
             </div>
-            <div className="grid grid-cols-7 mt-2 text-sm md:md-96">
+            <div className="grid grid-cols-7 mt-2 text-sm md:md-96 h-80">
               {days.map((day, dayIdx) => (
                 <div
                   key={day.toString()}
