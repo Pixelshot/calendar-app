@@ -565,10 +565,6 @@ video {
   grid-column-start: 7;
 }
 
-.row-span-2 {
-  grid-row: span 2 / span 2;
-}
-
 .-m-2 {
   margin: -0.5rem;
 }
@@ -648,6 +644,10 @@ video {
   height: 1.25rem;
 }
 
+.h-80 {
+  height: 20rem;
+}
+
 .h-8 {
   height: 2rem;
 }
@@ -662,10 +662,6 @@ video {
 
 .h-6 {
   height: 1.5rem;
-}
-
-.h-80 {
-  height: 20rem;
 }
 
 .w-screen {
@@ -696,22 +692,6 @@ video {
   width: 9rem;
 }
 
-.w-full {
-  width: 100%;
-}
-
-.w-1\/2 {
-  width: 50%;
-}
-
-.w-1\/5 {
-  width: 20%;
-}
-
-.max-w-md {
-  max-width: 28rem;
-}
-
 .flex-auto {
   flex: 1 1 auto;
 }
@@ -740,52 +720,20 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.grid-flow-col {
-  grid-auto-flow: column;
-}
-
 .grid-cols-7 {
   grid-template-columns: repeat(7, minmax(0, 1fr));
-}
-
-.grid-cols-3 {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.grid-rows-3 {
-  grid-template-rows: repeat(3, minmax(0, 1fr));
 }
 
 .grid-rows-2 {
   grid-template-rows: repeat(2, minmax(0, 1fr));
 }
 
-.place-content-end {
-  place-content: end;
-}
-
-.place-items-end {
-  place-items: end;
-}
-
 .place-items-center {
   place-items: center;
 }
 
-.items-end {
-  align-items: flex-end;
-}
-
 .items-center {
   align-items: center;
-}
-
-.justify-end {
-  justify-content: flex-end;
 }
 
 .justify-center {
@@ -794,14 +742,6 @@ video {
 
 .justify-items-end {
   justify-items: end;
-}
-
-.gap-4 {
-  gap: 1rem;
-}
-
-.gap-0 {
-  gap: 0px;
 }
 
 .space-y-1 > :not([hidden]) ~ :not([hidden]) {
@@ -881,20 +821,13 @@ video {
   padding-bottom: 0.5rem;
 }
 
-.pt-16 {
-  padding-top: 4rem;
-}
-
-.pb-4 {
-  padding-bottom: 1rem;
-}
-
 .text-center {
   text-align: center;
 }
 
-.text-right {
-  text-align: right;
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
 }
 
 .text-xs {
@@ -905,21 +838,6 @@ video {
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
-}
-
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-
-.text-6xl {
-  font-size: 3.75rem;
-  line-height: 1;
-}
-
-.text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
 }
 
 .font-semibold {
@@ -1071,32 +989,12 @@ video {
     display: grid;
   }
 
-  .md\:h-80 {
-    height: 20rem;
-  }
-
-  .md\:h-screen {
-    height: 100vh;
-  }
-
   .md\:w-96 {
     width: 24rem;
   }
 
-  .md\:w-screen {
-    width: 100vw;
-  }
-
-  .md\:w-1\/2 {
-    width: 50%;
-  }
-
   .md\:max-w-6xl {
     max-width: 72rem;
-  }
-
-  .md\:max-w-4xl {
-    max-width: 56rem;
   }
 
   .md\:grid-cols-2 {
