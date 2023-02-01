@@ -56,18 +56,18 @@ export default function Calendar() {
             <div className="">
               <div className="grid grid-cols-2">
                 <h2 className="text-4xl">eCalendar</h2>
-                <div className="grid grid-rows-2 justify-items-end">
+                <div className="grid grid-cols-1 justify-items-end">
                   <h2 className="text-4xl">
                     {format(firstDayCurrentMonth, 'yyy')}
                   </h2>
                   <h2>Time Placeholder</h2>
                 </div>
               </div>
-              <div className="flex ml-20">
+              <div className="flex pl-10 mx-4">
                 <h2 className="flex-auto mt-2 font-semibold text-gray-400">
                   {format(firstDayPreviousMonth, 'MMMM')}
                 </h2>
-                <h2 className="flex-grow mt-1 font-semibold text-gray-900 text-2xl">
+                <h2 className="flex-grow font-semibold text-gray-900 text-2xl">
                   {format(firstDayCurrentMonth, 'MMMM')}
                 </h2>
                 <h2 className="flex-auto mt-2 font-semibold text-gray-400">
@@ -75,19 +75,19 @@ export default function Calendar() {
                 </h2>
               </div>
             </div>
-            <hr class="w-full h-1 mt-4 -mb-4 bg-gray-100 border-0 rounded dark:bg-gray-700" />
+            <hr className="w-full h-1 mt-4 -mb-4 bg-gray-100 border-0 rounded dark:bg-gray-700" />
             <div className="grid grid-cols-3 grid-flow-col">
               {/* Start of Day and dates */}
               <button
                 type="button"
                 onClick={previousMonth}
-                className="-my-1.5 flex flex-none col-span-3 items-center justify-center p-1.5 text-gray-400 hover:text-gray-500"
+                className="-my-1.5 pr-4 flex flex-none col-span-3 items-center p-1.5 text-gray-400 hover:text-gray-500"
               >
                 <span className="sr-only">Previous month</span>
-                <ChevronLeftIcon className="w-5 h-5" aria-hidden="true" />
+                <ChevronLeftIcon className="w-10 h-10" aria-hidden="true" />
               </button>
               <div className="grid grid-row-2">
-                <div className="grid grid-cols-7 mt-10 text-xs leading-6 text-center text-gray-500 md:w-96">
+                <div className="grid grid-cols-7 gap-4 mt-10 text-xs leading-6 text-center text-gray-700 md:w-96">
                   <div>SUN</div>
                   <div>MON</div>
                   <div>TUE</div>
@@ -96,7 +96,7 @@ export default function Calendar() {
                   <div>FRI</div>
                   <div>SAT</div>
                 </div>
-                <div className="grid grid-cols-7 mt-2 text-sm md:md-96 h-80">
+                <div className="grid grid-cols-7 gap-4 mt-2 text-sm md:md-96 h-80">
                   {days.map((day, dayIdx) => (
                     <div
                       key={day.toString()}
@@ -152,10 +152,10 @@ export default function Calendar() {
               <button
                 onClick={nextMonth}
                 type="button"
-                className="-my-1.5 -mr-1.5 ml-2 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500"
+                className="-my-1.5 -mr-1.5 ml-2 flex flex-none items-center p-1.5 text-gray-400 hover:text-gray-500"
               >
                 <span className="sr-only">Next month</span>
-                <ChevronRightIcon className="w-5 h-5" aria-hidden="true" />
+                <ChevronRightIcon className="w-10 h-10" aria-hidden="true" />
               </button>
             </div>
           </div>
