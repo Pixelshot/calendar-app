@@ -49,7 +49,7 @@ export default function Calendar() {
   );
 
   return (
-    <div className="md:grid h-screen w-screen place-items-center sm:max-md:pt-4">
+    <div className="md:grid h-screen w-screen place-items-center max-md:pt-4">
       <div className="px-4 mx-auto sm:px-7 md:max-w-6xl md:px-6">
         <div className="md:grid md:grid-cols-2 md:divide-x md:divide-gray-200">
           <div className="md:pr-14">
