@@ -191,3 +191,11 @@ let colStartClasses = [
   'col-start-6',
   'col-start-7',
 ];
+
+// TODO:
+// 1. Adjust maximum height of Calendar because certain dates have more numbers
+// 2. Decide on font size
+// 3. Spacing between the 3 months might be too much on small and medium. Might want to reduce the gap
+// 4. Need to push arrows a little bit more to the sides. Might need to reconfigure custom fr in tailwind settings
+// 5. Create Time component
+// 6. Fonts on the other side needs to be bigger
