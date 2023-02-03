@@ -77,13 +77,13 @@ export default function Calendar() {
               <button
                 type="button"
                 onClick={previousMonth}
-                className=" text-gray-400 hover:text-gray-500"
+                className="w-auto text-gray-400 hover:text-gray-500"
               >
                 <span className="sr-only">Previous month</span>
                 <ChevronLeftIcon className="w-10 h-10" aria-hidden="true" />
               </button>
               <div className="grid grid-cols-3 justify-items-center">
-                <div className="grid grid-cols-7 col-start-1 col-span-3 gap-10 mt-10 text-md text-center text-gray-700 md:w-96">
+                <div className="grid grid-cols-7 col-span-3 gap-4 sm:max-md:gap-10 mt-10 text-xs sm:max-md:text-sm text-gray-700 w-64">
                   <div>SUN</div>
                   <div>MON</div>
                   <div>TUE</div>
@@ -92,7 +92,7 @@ export default function Calendar() {
                   <div>FRI</div>
                   <div>SAT</div>
                 </div>
-                <div className="grid grid-cols-7 col-span-7 sm:gap-x-10 sm:gap-y-2 md:w-96">
+                <div className="grid grid-cols-7 col-span-7 gap-x-4 text-xs w-64">
                   {days.map((day, dayIdx) => (
                     <div
                       key={day.toString()}
@@ -148,7 +148,7 @@ export default function Calendar() {
               <button
                 onClick={nextMonth}
                 type="button"
-                className=" text-gray-400 hover:text-gray-500"
+                className=" w-auto text-gray-400 hover:text-gray-500"
               >
                 <span className="sr-only">Next month</span>
                 <ChevronRightIcon className="w-10 h-10" aria-hidden="true" />
