@@ -1,4 +1,8 @@
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid';
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  ClockIcon,
+} from '@heroicons/react/solid';
 import {
   add,
   eachDayOfInterval,
@@ -15,7 +19,7 @@ import {
   startOfWeek,
   startOfToday,
 } from 'date-fns';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Meeting from '~/components/Meeting';
 import { meetings } from '~/data/meetings';
 
@@ -25,6 +29,7 @@ export function classNames(...classes) {
 
 export default function Calendar() {
   let today = startOfToday(); // day starts at 12 am
+  let [currentTime, setCurrentTime] = useState(format(new Date(), 'pp'));
   let [selectedDay, setSelectedDay] = useState(today);
   let [currentMonth, setCurrentMonth] = useState(format(today, 'MMM-yyyy'));
   let firstDayCurrentMonth = parse(currentMonth, 'MMM-yyyy', new Date());
@@ -48,11 +53,18 @@ export default function Calendar() {
     isSameDay(parseISO(meeting.startDatetime), selectedDay)
   );
 
+  useEffect(() => {
+    const timeInterval = setInterval(() => {
+      setCurrentTime(format(new Date(), 'pp'));
+    }, 1000);
+    return () => clearInterval(timeInterval);
+  }, []);
+
   return (
     <div className="md:grid h-screen w-screen place-items-center max-md:pt-4">
       <div className="px-4 mx-auto sm:px-7 md:max-w-6xl md:px-6">
-        <div className="md:grid md:grid-cols-2 md:divide-x md:divide-gray-200">
-          <div className="md:pr-14">
+        <div className="md:grid md:grid-cols-3 md:divide-x md:divide-gray-200">
+          <div className="md:pr-10 col-span-2">
             <div className="">
               <div className="grid grid-cols-2">
                 <h2 className="text-4xl">eCalendar</h2>
@@ -60,30 +72,38 @@ export default function Calendar() {
                   <h2 className="text-4xl">
                     {format(firstDayCurrentMonth, 'yyy')}
                   </h2>
-                  <h2>Time Placeholder</h2>
+                  {/* Clock */}
+                  <h2 className="grid grid-cols-2 justify-items-end">
+                    <ClockIcon className="h-4 mt-1 mr-1" /> {currentTime}
+                  </h2>
                 </div>
               </div>
+              {/* 3 months */}
               <div className="grid grid-cols-3 place-items-center pt-4 text-lg">
-                <h2 className="">{format(firstDayPreviousMonth, 'MMMM')}</h2>
+                <h2 className="text-gray-500">
+                  {format(firstDayPreviousMonth, 'MMMM')}
+                </h2>
                 <h2 className="text-2xl">
                   {format(firstDayCurrentMonth, 'MMMM')}
                 </h2>
-                <h2 className="">{format(firstDayNextMonth, 'MMMM')}</h2>
+                <h2 className="text-gray-500">
+                  {format(firstDayNextMonth, 'MMMM')}
+                </h2>
               </div>
             </div>
             <hr className="w-full h-1 mt-4 -mb-4 bg-gray-100 border-0 rounded dark:bg-gray-700" />
             {/* Start of Day and dates */}
-            <div className="grid grid-cols-13 place-items-center">
+            <div className="flex gap-4 place-items-center">
               <button
                 type="button"
                 onClick={previousMonth}
-                className="w-auto text-gray-400 hover:text-gray-500"
+                className="text-gray-400 hover:text-gray-500 h-1"
               >
                 <span className="sr-only">Previous month</span>
                 <ChevronLeftIcon className="w-10 h-10" aria-hidden="true" />
               </button>
-              <div className="grid grid-cols-3 justify-items-center">
-                <div className="grid grid-cols-7 col-span-3 gap-4 sm:max-md:gap-10 mt-10 text-xs sm:max-md:text-sm text-gray-700 w-64">
+              <div className="flex flex-col flex-grow md:justify-items-center">
+                <div className="grid grid-cols-7 text-xs sm:max-md:text-sm sm:gap-2 mt-10 text-center">
                   <div>SUN</div>
                   <div>MON</div>
                   <div>TUE</div>
@@ -92,13 +112,13 @@ export default function Calendar() {
                   <div>FRI</div>
                   <div>SAT</div>
                 </div>
-                <div className="grid grid-cols-7 col-span-7 gap-x-4 text-xs w-64">
+                <div className="grid grid-cols-7 h-56 auto-cols-min text-xs lg:gap-2 sm:text-sm sm:mt-4">
                   {days.map((day, dayIdx) => (
                     <div
                       key={day.toString()}
                       className={classNames(
                         dayIdx === 0 && colStartClasses[getDay(day)],
-                        'py-1.5'
+                        'sm:max-md:py-1'
                       )}
                     >
                       <button
@@ -148,21 +168,21 @@ export default function Calendar() {
               <button
                 onClick={nextMonth}
                 type="button"
-                className=" w-auto text-gray-400 hover:text-gray-500"
+                className=" text-gray-400 hover:text-gray-500 h-1"
               >
                 <span className="sr-only">Next month</span>
                 <ChevronRightIcon className="w-10 h-10" aria-hidden="true" />
               </button>
             </div>
           </div>
-          <section className="mt-12 md:mt-0 md:pl-14">
+          <section className="mt-12 md:mt-0 md:pl-14 md:text-xl">
             <h2 className="font-semibold text-gray-900">
               Schedule for{' '}
               <time dateTime={format(selectedDay, 'yyyy-MM-dd')}>
                 {format(selectedDay, 'MMM dd, yyy')}
               </time>
             </h2>
-            <ol className="mt-4 space-y-1 text-sm leading-6 text-gray-500">
+            <ol className="mt-4 space-y-1 md:text-md leading-6 text-gray-500">
               {selectedDayMeetings.length > 0 ? (
                 selectedDayMeetings.map((meeting) => (
                   <Meeting
@@ -193,9 +213,15 @@ let colStartClasses = [
 ];
 
 // TODO:
-// 1. Adjust maximum height of Calendar because certain dates have more numbers
-// 2. Decide on font size
-// 3. Spacing between the 3 months might be too much on small and medium. Might want to reduce the gap
-// 4. Need to push arrows a little bit more to the sides. Might need to reconfigure custom fr in tailwind settings
-// 5. Create Time component
-// 6. Fonts on the other side needs to be bigger
+// 1. Adjust maximum height of Calendar because certain dates have more numbers ✅
+// 2. Decide on font size ✅
+// 3. Spacing between the 3 months might be too much on small and medium. Might want to reduce the gap ✅
+// 4. Need to push arrows a little bit more to the sides. Might need to reconfigure custom fr in tailwind settings ✅
+// 5. Create Time component ✅
+// 6. Fonts on the other side needs to be bigger ✅
+// 7. Change Meeting to Appointment
+// 8. Connect to Database
+// 9. Create add with Form
+// 10. Implement CRUD
+// 11. List down appointments of the day
+// 12. Figure out what to do with the seasonal background image
