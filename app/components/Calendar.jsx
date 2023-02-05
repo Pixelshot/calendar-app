@@ -91,6 +91,7 @@ export default function Calendar() {
                 </h2>
               </div>
             </div>
+            {/* Horizontal border */}
             <hr className="w-full h-1 mt-4 -mb-4 bg-gray-100 border-0 rounded dark:bg-gray-700" />
             {/* Start of Day and dates */}
             <div className="flex gap-4 place-items-center">
@@ -220,7 +221,7 @@ let colStartClasses = [
 // 5. Create Time component ✅
 // 6. Fonts on the other side needs to be bigger ✅
 // 7. Connect to Database ✅
-// 8. Change Appointment to Appointment
+// 8. Change Appointment to Appointment ✅
 // 9. Create add with Form
 // 10. Implement CRUD
 // 11. List down appointments of the day
