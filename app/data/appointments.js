@@ -1,4 +1,4 @@
-export const meetings = [
+export const appointments = [
   {
     id: 1,
     name: 'Leslie Alexander',

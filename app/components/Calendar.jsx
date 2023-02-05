@@ -20,8 +20,8 @@ import {
   startOfToday,
 } from 'date-fns';
 import { useState, useEffect } from 'react';
-import Meeting from '~/components/Meeting';
-import { meetings } from '~/data/meetings';
+import Appointment from '~/components/Appointment';
+import { appointments } from '~/data/appointments';
 
 export function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -49,8 +49,8 @@ export default function Calendar() {
     setCurrentMonth(format(firstDayNextMonth, 'MMM-yyyy'));
   }
 
-  let selectedDayMeetings = meetings.filter((meeting) =>
-    isSameDay(parseISO(meeting.startDatetime), selectedDay)
+  let selectedDayAppointments = appointments.filter((appointment) =>
+    isSameDay(parseISO(appointment.startDatetime), selectedDay)
   );
 
   useEffect(() => {
@@ -63,8 +63,8 @@ export default function Calendar() {
   return (
     <div className="md:grid h-screen w-screen place-items-center max-md:pt-4">
       <div className="px-4 mx-auto sm:px-7 md:max-w-6xl md:px-6">
-        <div className="md:grid md:grid-cols-3 md:divide-x md:divide-gray-200">
-          <div className="md:pr-10 col-span-2">
+        <div className="md:grid md:grid-cols-3 lg:grid-cols-4 md:divide-x md:divide-gray-200">
+          <div className="md:pr-10 col-span-2 lg:col-span-3">
             <div className="">
               <div className="grid grid-cols-2">
                 <h2 className="text-4xl">eCalendar</h2>
@@ -155,8 +155,8 @@ export default function Calendar() {
                       </button>
 
                       <div className="w-1 h-1 mx-auto mt-1">
-                        {meetings.some((meeting) =>
-                          isSameDay(parseISO(meeting.startDatetime), day)
+                        {appointments.some((appointment) =>
+                          isSameDay(parseISO(appointment.startDatetime), day)
                         ) && (
                           <div className="w-1 h-1 rounded-full bg-sky-500"></div>
                         )}
@@ -183,16 +183,16 @@ export default function Calendar() {
               </time>
             </h2>
             <ol className="mt-4 space-y-1 md:text-sm leading-6 text-gray-500">
-              {selectedDayMeetings.length > 0 ? (
-                selectedDayMeetings.map((meeting) => (
-                  <Meeting
-                    meeting={meeting}
-                    key={meeting.id}
+              {selectedDayAppointments.length > 0 ? (
+                selectedDayAppointments.map((appointment) => (
+                  <Appointment
+                    appointment={appointment}
+                    key={appointment.id}
                     classNames={classNames}
                   />
                 ))
               ) : (
-                <p>No meetings for today.</p>
+                <p>No appointments for today.</p>
               )}
             </ol>
           </section>
@@ -220,7 +220,7 @@ let colStartClasses = [
 // 5. Create Time component ✅
 // 6. Fonts on the other side needs to be bigger ✅
 // 7. Connect to Database ✅
-// 8. Change Meeting to Appointment
+// 8. Change Appointment to Appointment
 // 9. Create add with Form
 // 10. Implement CRUD
 // 11. List down appointments of the day
