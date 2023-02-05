@@ -219,8 +219,8 @@ let colStartClasses = [
 // 4. Need to push arrows a little bit more to the sides. Might need to reconfigure custom fr in tailwind settings ✅
 // 5. Create Time component ✅
 // 6. Fonts on the other side needs to be bigger ✅
-// 7. Change Meeting to Appointment
-// 8. Connect to Database
+// 7. Connect to Database ✅
+// 8. Change Meeting to Appointment
 // 9. Create add with Form
 // 10. Implement CRUD
 // 11. List down appointments of the day
