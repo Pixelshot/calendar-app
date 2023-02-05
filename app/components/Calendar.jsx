@@ -182,7 +182,7 @@ export default function Calendar() {
                 {format(selectedDay, 'MMM dd, yyy')}
               </time>
             </h2>
-            <ol className="mt-4 space-y-1 md:text-md leading-6 text-gray-500">
+            <ol className="mt-4 space-y-1 md:text-sm leading-6 text-gray-500">
               {selectedDayMeetings.length > 0 ? (
                 selectedDayMeetings.map((meeting) => (
                   <Meeting
