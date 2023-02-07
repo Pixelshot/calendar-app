@@ -176,7 +176,7 @@ export default function Calendar() {
               </button>
             </div>
           </div>
-          <section className="mt-12 md:mt-0 md:pl-14 md:text-xl">
+          <section className="mt-12 md:mt-0 md:pl-14 md:text-xl w-max">
             <h2 className="font-semibold text-gray-900">
               Schedule for{' '}
               <time dateTime={format(selectedDay, 'yyyy-MM-dd')}>

@@ -12,8 +12,6 @@ model Appointment {
   title       String
   startDate   DateTime @db.Timestamptz(6)
   endDate     DateTime @db.Timestamptz(6)
-  startTime   DateTime @db.Timestamptz(6)
-  EndTime     DateTime @db.Timestamptz(6)
   Description String
   People      String
   Location    String
