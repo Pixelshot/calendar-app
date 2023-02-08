@@ -10,8 +10,8 @@ datasource db {
 model Appointment {
   id          Int      @id @default(autoincrement())
   title       String
-  startDate   DateTime @db.Timestamptz(6)
-  endDate     DateTime @db.Timestamptz(6)
+  start_date  DateTime @db.Timestamptz(6)
+  end_date    DateTime @db.Timestamptz(6)
   Description String
   People      String
   Location    String

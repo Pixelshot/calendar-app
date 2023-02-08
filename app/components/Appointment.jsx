@@ -4,24 +4,25 @@ import { format, parseISO } from 'date-fns';
 import { Fragment } from 'react';
 
 export default function Appointment({ appointment, classNames }) {
-  let startDateTime = parseISO(appointment.startDatetime);
-  let endDateTime = parseISO(appointment.endDatetime);
+  let startDateTime = parseISO(appointment.start_date);
+  let endDateTime = parseISO(appointment.end_date);
 
   return (
     <li className="flex items-center px-4 py-2 space-x-4 group rounded-xl focus-within:bg-gray-100 hover:bg-gray-100">
-      <img
+      {/* <img
         src={appointment.imageUrl}
         alt=""
         className="flex-none w-10 h-10 rounded-full"
-      />
+      /> */}
       <div className="flex-auto">
-        <p className="text-gray-900">{appointment.name}</p>
+        <p className="text-gray-900">{appointment.title}</p>
         <p className="mt-0.5">
-          <time dateTime={appointment.startDatetime}>
+          {/* <p>{format(startDateTime, 'h:mm a')}</p> */}
+          <time dateTime={appointment.start_date}>
             {format(startDateTime, 'h:mm a')}
           </time>{' '}
           -{' '}
-          <time dateTime={appointment.endDatetime}>
+          <time dateTime={appointment.end_date}>
             {format(endDateTime, 'h:mm a')}
           </time>
         </p>

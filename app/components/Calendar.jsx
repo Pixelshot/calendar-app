@@ -9,6 +9,7 @@ import {
   endOfWeek,
   endOfMonth,
   format,
+  formatISO,
   getDay,
   isEqual,
   isSameDay,
@@ -21,14 +22,15 @@ import {
 } from 'date-fns';
 import { useState, useEffect } from 'react';
 import Appointment from '~/components/Appointment';
-import { appointments } from '~/data/appointments';
+// import { getAppointments } from '~/data/appointments.server';
 
 export function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Calendar() {
+export default function Calendar({ appointments }) {
   let today = startOfToday(); // day starts at 12 am
+  console.log(today);
   let [currentTime, setCurrentTime] = useState(format(new Date(), 'pp'));
   let [selectedDay, setSelectedDay] = useState(today);
   let [currentMonth, setCurrentMonth] = useState(format(today, 'MMM-yyyy'));
@@ -50,7 +52,7 @@ export default function Calendar() {
   }
 
   let selectedDayAppointments = appointments.filter((appointment) =>
-    isSameDay(parseISO(appointment.startDatetime), selectedDay)
+    isSameDay(parseISO(appointment.start_date), selectedDay)
   );
 
   useEffect(() => {
@@ -157,7 +159,7 @@ export default function Calendar() {
 
                       <div className="w-1 h-1 mx-auto mt-1">
                         {appointments.some((appointment) =>
-                          isSameDay(parseISO(appointment.startDatetime), day)
+                          isSameDay(parseISO(appointment.start_date), day)
                         ) && (
                           <div className="w-1 h-1 rounded-full bg-sky-500"></div>
                         )}
