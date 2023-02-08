@@ -9,7 +9,6 @@ import {
   endOfWeek,
   endOfMonth,
   format,
-  formatISO,
   getDay,
   isEqual,
   isSameDay,
@@ -30,8 +29,7 @@ export function classNames(...classes) {
 
 export default function Calendar({ appointments }) {
   let today = startOfToday(); // day starts at 12 am
-  console.log(today);
-  let [currentTime, setCurrentTime] = useState(format(new Date(), 'pp'));
+  let [currentTime, setCurrentTime] = useState(new Date());
   let [selectedDay, setSelectedDay] = useState(today);
   let [currentMonth, setCurrentMonth] = useState(format(today, 'MMM-yyyy'));
   let firstDayCurrentMonth = parse(currentMonth, 'MMM-yyyy', new Date());
@@ -57,11 +55,10 @@ export default function Calendar({ appointments }) {
 
   useEffect(() => {
     const timeInterval = setInterval(() => {
-      setCurrentTime(format(new Date(), 'pp'));
+      setCurrentTime(new Date());
     }, 1000);
     return () => clearInterval(timeInterval);
   }, []);
-
   return (
     <div className="md:grid h-screen w-screen place-items-center max-md:pt-4">
       <div className="px-4 mx-auto sm:px-7 md:max-w-6xl md:px-6">
@@ -76,7 +73,8 @@ export default function Calendar({ appointments }) {
                   </h2>
                   {/* Clock */}
                   <h2 className="grid grid-cols-2 justify-items-end">
-                    <ClockIcon className="h-4 mt-1 mr-1" /> {currentTime}
+                    <ClockIcon className="h-4 mt-1 mr-1" />{' '}
+                    {format(currentTime, 'pp')}
                   </h2>
                 </div>
               </div>
