@@ -1,13 +1,11 @@
 import Calendar from '~/components/Calendar';
-import { useLoaderData } from '@remix-run/react';
 import { getAppointments } from '~/data/appointments.server.js';
 
 export default function Index() {
-  const appointments = useLoaderData();
   return (
     <div>
-      <Calendar appointments={appointments} />
-      {/* <h1>Hi</h1> */}
+      {/* Since Calendar is using the same route as index.js, we can use useLoaderData() directly on <Calendar /> */}
+      <Calendar />
     </div>
   );
 }

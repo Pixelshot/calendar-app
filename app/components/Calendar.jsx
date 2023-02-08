@@ -22,12 +22,15 @@ import {
 import { useState, useEffect } from 'react';
 import Appointment from '~/components/Appointment';
 // import { getAppointments } from '~/data/appointments.server';
+import { useLoaderData } from '@remix-run/react';
 
 export function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Calendar({ appointments }) {
+export default function Calendar() {
+  const appointments = useLoaderData();
+  // console.log(appointments);
   let today = startOfToday(); // day starts at 12 am
   let [currentTime, setCurrentTime] = useState(new Date());
   let [selectedDay, setSelectedDay] = useState(today);
