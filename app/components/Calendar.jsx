@@ -30,6 +30,7 @@ export function classNames(...classes) {
 
 export default function Calendar() {
   const appointments = useLoaderData();
+  // console.log('should stop');
   // console.log(appointments);
   let today = startOfToday(); // day starts at 12 am
   let [currentTime, setCurrentTime] = useState(new Date());
