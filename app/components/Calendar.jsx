@@ -22,7 +22,7 @@ import {
 import { useState, useEffect } from 'react';
 import Appointment from '~/components/Appointment';
 // import { getAppointments } from '~/data/appointments.server';
-import { useLoaderData } from '@remix-run/react';
+import { Link, useLoaderData } from '@remix-run/react';
 
 export function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -200,6 +200,9 @@ export default function Calendar() {
                 <p>No appointments for today.</p>
               )}
             </ol>
+            <Link to="/add">
+              <button>Modal</button>
+            </Link>
           </section>
         </div>
       </div>
