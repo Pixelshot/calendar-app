@@ -6,7 +6,6 @@ import { Fragment } from 'react';
 export default function Appointment({ appointment, classNames }) {
   let startDateTime = parseISO(appointment.start_date);
   let endDateTime = parseISO(appointment.end_date);
-  console.log(startDateTime);
   return (
     <li className="flex items-center px-4 py-2 space-x-4 group rounded-xl focus-within:bg-gray-100 hover:bg-gray-100">
       {/* <img
