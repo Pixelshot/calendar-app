@@ -228,8 +228,8 @@ let colStartClasses = [
 // 5. Create Time component ✅
 // 6. Fonts on the other side needs to be bigger ✅
 // 7. Connect to Database ✅
-// 8. Change Appointment to Appointment ✅
-// 9. Create add with Form
-// 10. Implement CRUD
-// 11. List down appointments of the day
+// 8. Change Meeting to Appointment ✅
+// 9. Create add with Form ✅
+// 10. List down appointments of the day ✅
+// 11. Implement CRUD
 // 12. Figure out what to do with the seasonal background image

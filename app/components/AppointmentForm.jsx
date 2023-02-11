@@ -2,7 +2,7 @@ import { Form } from '@remix-run/react';
 
 export default function AppointmentForm() {
   return (
-    <Form>
+    <Form method="post">
       <div className="relative z-0 w-full mb-6 group">
         <input
           type="text"
@@ -24,7 +24,8 @@ export default function AppointmentForm() {
         <div className="relative z-0 w-full mb-6 group">
           <input
             type="datetime-local"
-            name="datetime"
+            step="1"
+            name="start_date"
             id="datetime"
             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=" "
@@ -40,7 +41,8 @@ export default function AppointmentForm() {
         <div className="relative z-0 w-full mb-6 group">
           <input
             type="datetime-local"
-            name="datetime"
+            step="1"
+            name="end_date"
             id="datetime"
             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=" "
@@ -72,7 +74,7 @@ export default function AppointmentForm() {
         <div className="relative z-0 w-full mb-6 group">
           <input
             type="text"
-            name="Location"
+            name="location"
             id="Location"
             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=" "

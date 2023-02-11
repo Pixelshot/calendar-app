@@ -1,12 +1,12 @@
 import { Menu, Transition } from '@headlessui/react';
 import { DotsVerticalIcon } from '@heroicons/react/outline';
-import { format, parseISO } from 'date-fns';
+import { format, parseISO, isSameDay } from 'date-fns';
 import { Fragment } from 'react';
 
 export default function Appointment({ appointment, classNames }) {
   let startDateTime = parseISO(appointment.start_date);
   let endDateTime = parseISO(appointment.end_date);
-
+  console.log(startDateTime);
   return (
     <li className="flex items-center px-4 py-2 space-x-4 group rounded-xl focus-within:bg-gray-100 hover:bg-gray-100">
       {/* <img
@@ -17,13 +17,14 @@ export default function Appointment({ appointment, classNames }) {
       <div className="flex-auto">
         <p className="text-gray-900">{appointment.title}</p>
         <p className="mt-0.5">
-          {/* <p>{format(startDateTime, 'h:mm a')}</p> */}
           <time dateTime={appointment.start_date}>
             {format(startDateTime, 'h:mm a')}
           </time>{' '}
           -{' '}
           <time dateTime={appointment.end_date}>
-            {format(endDateTime, 'h:mm a')}
+            {isSameDay(startDateTime, endDateTime)
+              ? format(endDateTime, ' h:mm a')
+              : format(endDateTime, 'h:mm a do LLL')}
           </time>
         </p>
       </div>

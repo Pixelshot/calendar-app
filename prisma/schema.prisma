@@ -12,7 +12,7 @@ model Appointment {
   title       String
   start_date  DateTime @db.Timestamptz(6)
   end_date    DateTime @db.Timestamptz(6)
-  Description String
-  People      String
-  Location    String
+  description String
+  people      String
+  location    String
 }
