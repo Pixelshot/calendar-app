@@ -26,3 +26,31 @@ export async function addAppointment(appointmentData) {
     throw new Error('Unable to add Appointment');
   }
 }
+
+export async function updateAppointment(id, appointmentData) {
+  try {
+    return await prisma.appointment.update({
+      where: { id },
+      data: {
+        title: appointmentData.title,
+        start_date: parseISO(appointmentData.start_date),
+        end_date: parseISO(appointmentData.end_date),
+        description: appointmentData.description,
+        people: appointmentData.people,
+        location: appointmentData.location,
+      },
+    });
+  } catch (error) {
+    throw new Error('Failed to updated appointment.');
+  }
+}
+
+export async function deleteAppointment(id) {
+  try {
+    return await prisma.appointment.delete({
+      where: { id },
+    });
+  } catch (error) {
+    throw new Error('Failed to delete appointment.');
+  }
+}

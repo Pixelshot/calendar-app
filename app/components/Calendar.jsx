@@ -57,12 +57,14 @@ export default function Calendar() {
     isSameDay(parseISO(appointment.start_date), selectedDay)
   );
 
-  useEffect(() => {
-    const timeInterval = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 1000);
-    return () => clearInterval(timeInterval);
-  }, []);
+  console.log('selectedDayAppointments: ', selectedDayAppointments);
+
+  // useEffect(() => {
+  //   const timeInterval = setInterval(() => {
+  //     setCurrentTime(new Date());
+  //   }, 1000);
+  //   return () => clearInterval(timeInterval);
+  // }, []);
   return (
     <div className="md:grid h-screen w-screen place-items-center max-md:pt-4">
       <div className="px-4 mx-auto sm:px-7 md:max-w-6xl md:px-6">
@@ -76,10 +78,10 @@ export default function Calendar() {
                     {format(firstDayCurrentMonth, 'yyy')}
                   </h2>
                   {/* Clock */}
-                  <h2 className="grid grid-cols-2 justify-items-end">
+                  {/* <h2 className="grid grid-cols-2 justify-items-end">
                     <ClockIcon className="h-4 mt-1 mr-1" />{' '}
                     {format(currentTime, 'pp')}
-                  </h2>
+                  </h2> */}
                 </div>
               </div>
               {/* 3 months */}

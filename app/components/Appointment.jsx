@@ -2,10 +2,13 @@ import { Menu, Transition } from '@headlessui/react';
 import { DotsVerticalIcon } from '@heroicons/react/outline';
 import { format, parseISO, isSameDay } from 'date-fns';
 import { Fragment } from 'react';
+import { Link } from '@remix-run/react';
 
-export default function Appointment({ appointment, classNames }) {
+export default function Appointment({ appointment, classNames, aptID }) {
   let startDateTime = parseISO(appointment.start_date);
   let endDateTime = parseISO(appointment.end_date);
+  console.log('appointment.id: ', appointment.id);
+
   return (
     <li className="flex items-center px-4 py-2 space-x-4 group rounded-xl focus-within:bg-gray-100 hover:bg-gray-100">
       {/* <img
@@ -51,15 +54,15 @@ export default function Appointment({ appointment, classNames }) {
             <div className="py-1">
               <Menu.Item>
                 {({ active }) => (
-                  <a
-                    href="#"
+                  <Link
+                    to={appointment.id}
                     className={classNames(
                       active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                       'block px-4 py-2 text-sm'
                     )}
                   >
                     Edit
-                  </a>
+                  </Link>
                 )}
               </Menu.Item>
               <Menu.Item>
