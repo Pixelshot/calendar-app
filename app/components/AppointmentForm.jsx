@@ -1,6 +1,24 @@
-import { Form } from '@remix-run/react';
+import {
+  Form,
+  useMatches,
+  useParams,
+  useTransition as useNavigation,
+  useLoaderData,
+} from '@remix-run/react';
 
 export default function AppointmentForm() {
+  const navigation = useNavigation();
+  const appointmentLoader = useLoaderData();
+  console.log('appointmentLoader: ', appointmentLoader);
+  const params = useParams();
+  const matches = useMatches();
+
+  const appointments = matches.find((match) => match.id === 'routes/add');
+  const appointmentData = appointments.data.find(
+    (appointment) => appointment.id === params.id
+  );
+  console.log('appointments', appointments);
+  console.log('appointmentLoader', appointmentLoader);
   return (
     <Form method="post">
       <div className="relative z-0 w-full mb-6 group">
