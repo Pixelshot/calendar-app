@@ -30,8 +30,7 @@ export function classNames(...classes) {
 
 export default function Calendar() {
   const appointments = useLoaderData();
-  // console.log('should stop');
-  // console.log(appointments);
+  // console.log('appointments: ', appointments);
   let today = startOfToday(); // day starts at 12 am
   let [currentTime, setCurrentTime] = useState(new Date());
   let [selectedDay, setSelectedDay] = useState(today);
@@ -56,8 +55,6 @@ export default function Calendar() {
   let selectedDayAppointments = appointments.filter((appointment) =>
     isSameDay(parseISO(appointment.start_date), selectedDay)
   );
-
-  console.log('selectedDayAppointments: ', selectedDayAppointments);
 
   // useEffect(() => {
   //   const timeInterval = setInterval(() => {

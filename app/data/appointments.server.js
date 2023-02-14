@@ -3,9 +3,22 @@ import parseISO from 'date-fns/parseISO';
 // === === === === === CRUD OPERATIONS  === === === === ===
 export async function getAppointments() {
   try {
-    return prisma.appointment.findMany();
+    return prisma.appointment.findMany({
+      orderBy: {
+        end_date: 'asc',
+      },
+    });
   } catch {
     throw new Error('Failed to fetch Appointment');
+  }
+}
+
+export async function getAppointment(id) {
+  try {
+    return await prisma.appointment.findFirst({ where: { id: Number(id) } });
+  } catch (error) {
+    console.log(error);
+    throw error;
   }
 }
 
@@ -30,7 +43,7 @@ export async function addAppointment(appointmentData) {
 export async function updateAppointment(id, appointmentData) {
   try {
     return await prisma.appointment.update({
-      where: { id },
+      where: { id: Number(id) },
       data: {
         title: appointmentData.title,
         start_date: parseISO(appointmentData.start_date),
@@ -54,3 +67,5 @@ export async function deleteAppointment(id) {
     throw new Error('Failed to delete appointment.');
   }
 }
+
+// TODO: Remove console.logs()

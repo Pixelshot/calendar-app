@@ -4,10 +4,9 @@ import { format, parseISO, isSameDay } from 'date-fns';
 import { Fragment } from 'react';
 import { Link } from '@remix-run/react';
 
-export default function Appointment({ appointment, classNames, aptID }) {
+export default function Appointment({ appointment, classNames }) {
   let startDateTime = parseISO(appointment.start_date);
   let endDateTime = parseISO(appointment.end_date);
-  console.log('appointment.id: ', appointment.id);
 
   return (
     <li className="flex items-center px-4 py-2 space-x-4 group rounded-xl focus-within:bg-gray-100 hover:bg-gray-100">
@@ -55,7 +54,7 @@ export default function Appointment({ appointment, classNames, aptID }) {
               <Menu.Item>
                 {({ active }) => (
                   <Link
-                    to={appointment.id}
+                    to={`${appointment.id}`}
                     className={classNames(
                       active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                       'block px-4 py-2 text-sm'
