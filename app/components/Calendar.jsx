@@ -199,8 +199,8 @@ export default function Calendar() {
                 <p>No appointments for today.</p>
               )}
             </ol>
-            <Link to="/add">
-              <button>Modal</button>
+            <Link to="/appointments/add">
+              <button>Add</button>
             </Link>
           </section>
         </div>

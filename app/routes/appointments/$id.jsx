@@ -7,7 +7,6 @@ import {
   deleteAppointment,
   getAppointment,
 } from '~/data/appointments.server.js';
-import Calendar from '~/components/Calendar';
 
 export default function UpdateAppointmentPage() {
   const navigate = useNavigate();
@@ -15,12 +14,9 @@ export default function UpdateAppointmentPage() {
     navigate('..');
   }
   return (
-    <>
-      {/* <Calendar /> */}
-      <Modal onClose={closeHandler}>
-        <AppointmentForm />
-      </Modal>
-    </>
+    <Modal onClose={closeHandler}>
+      <AppointmentForm />
+    </Modal>
   );
 }
 

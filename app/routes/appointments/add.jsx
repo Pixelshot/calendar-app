@@ -3,7 +3,7 @@ import { useNavigate } from '@remix-run/react';
 import Modal from '~/components/util/Modal';
 import Calendar from '~/components/Calendar';
 import AppointmentForm from '~/components/AppointmentForm';
-import { getAppointments, addAppointment } from '~/data/appointments.server.js';
+import { addAppointment } from '~/data/appointments.server.js';
 import { redirect } from '@remix-run/node';
 
 export default function AddAppointmentsPage() {
@@ -12,12 +12,9 @@ export default function AddAppointmentsPage() {
     navigate('..');
   }
   return (
-    <>
-      <Calendar />
-      <Modal onClose={closeHandler}>
-        <AppointmentForm />
-      </Modal>
-    </>
+    <Modal onClose={closeHandler}>
+      <AppointmentForm />
+    </Modal>
   );
 }
 
@@ -27,8 +24,4 @@ export async function action({ request }) {
 
   await addAppointment(appointmentData);
   return redirect('/');
-}
-
-export async function loader() {
-  return await getAppointments();
 }
