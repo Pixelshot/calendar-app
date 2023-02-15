@@ -2,7 +2,7 @@ import { Outlet } from '@remix-run/react';
 import Calendar from '~/components/Calendar';
 import { getAppointments } from '~/data/appointments.server.js';
 
-export default function Index() {
+export default function AppointmentsLayout() {
   return (
     <div>
       {/* Since Calendar is using the same route as index.js, we can use useLoaderData() directly on <Calendar /> */}
