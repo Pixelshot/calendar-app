@@ -2,11 +2,29 @@ import { Menu, Transition } from '@headlessui/react';
 import { DotsVerticalIcon } from '@heroicons/react/outline';
 import { format, parseISO, isSameDay } from 'date-fns';
 import { Fragment } from 'react';
-import { Link, Form } from '@remix-run/react';
+import { Link, useFetcher } from '@remix-run/react';
 
 export default function Appointment({ appointment, classNames }) {
   let startDateTime = parseISO(appointment.start_date);
   let endDateTime = parseISO(appointment.end_date);
+  const fetcher = useFetcher();
+
+  function deleteAppointmentHandler() {
+    fetcher.submit(null, {
+      method: 'delete',
+      action: `/appointments/${appointment.id}`,
+    });
+  }
+
+  if (fetcher.state !== 'idle') {
+    return (
+      <>
+        <p className={classNames('text-gray-700', 'block px-4 py-2 text-sm')}>
+          Deleting...
+        </p>
+      </>
+    );
+  }
 
   return (
     <li className="flex items-center px-4 py-2 space-x-4 group rounded-xl focus-within:bg-gray-100 hover:bg-gray-100">
@@ -66,19 +84,15 @@ export default function Appointment({ appointment, classNames }) {
               </Menu.Item>
               <Menu.Item>
                 {({ active }) => (
-                  <Form
-                    method="delete"
-                    action={`/appointments/${appointment.id}`}
+                  <button
+                    className={classNames(
+                      active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                      'block px-4 py-2 text-sm'
+                    )}
+                    onClick={deleteAppointmentHandler}
                   >
-                    <button
-                      className={classNames(
-                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                        'block px-4 py-2 text-sm'
-                      )}
-                    >
-                      Delete
-                    </button>
-                  </Form>
+                    Delete
+                  </button>
                 )}
               </Menu.Item>
             </div>

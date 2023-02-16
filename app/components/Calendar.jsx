@@ -21,7 +21,6 @@ import {
 } from 'date-fns';
 import { useState, useEffect } from 'react';
 import Appointment from '~/components/Appointment';
-// import { getAppointments } from '~/data/appointments.server';
 import { Link, useLoaderData } from '@remix-run/react';
 
 export function classNames(...classes) {
@@ -30,7 +29,6 @@ export function classNames(...classes) {
 
 export default function Calendar() {
   const appointments = useLoaderData();
-  // console.log('appointments: ', appointments);
   let today = startOfToday(); // day starts at 12 am
   let [currentTime, setCurrentTime] = useState(new Date());
   let [selectedDay, setSelectedDay] = useState(today);
@@ -230,5 +228,6 @@ let colStartClasses = [
 // 8. Change Meeting to Appointment ✅
 // 9. Create add with Form ✅
 // 10. List down appointments of the day ✅
-// 11. Implement CRUD
-// 12. Figure out what to do with the seasonal background image
+// 11. Implement CRUD ✅
+// 12. Figure out what to do with the seasonal background image ✅
+// 13. Clean up code before deployment

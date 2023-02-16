@@ -1,6 +1,6 @@
 import AppointmentForm from '~/components/AppointmentForm';
 import Modal from '~/components/util/Modal';
-import { useNavigate, useActionData, useLoaderData } from '@remix-run/react';
+import { useNavigate } from '@remix-run/react';
 import { redirect } from '@remix-run/node';
 import {
   updateAppointment,
