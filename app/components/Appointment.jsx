@@ -2,7 +2,7 @@ import { Menu, Transition } from '@headlessui/react';
 import { DotsVerticalIcon } from '@heroicons/react/outline';
 import { format, parseISO, isSameDay } from 'date-fns';
 import { Fragment } from 'react';
-import { Link } from '@remix-run/react';
+import { Link, Form } from '@remix-run/react';
 
 export default function Appointment({ appointment, classNames }) {
   let startDateTime = parseISO(appointment.start_date);
@@ -66,15 +66,19 @@ export default function Appointment({ appointment, classNames }) {
               </Menu.Item>
               <Menu.Item>
                 {({ active }) => (
-                  <a
-                    href="#"
-                    className={classNames(
-                      active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                      'block px-4 py-2 text-sm'
-                    )}
+                  <Form
+                    method="delete"
+                    action={`/appointments/${appointment.id}`}
                   >
-                    Cancel
-                  </a>
+                    <button
+                      className={classNames(
+                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                        'block px-4 py-2 text-sm'
+                      )}
+                    >
+                      Delete
+                    </button>
+                  </Form>
                 )}
               </Menu.Item>
             </div>

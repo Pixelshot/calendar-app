@@ -61,7 +61,7 @@ export async function updateAppointment(id, appointmentData) {
 export async function deleteAppointment(id) {
   try {
     return await prisma.appointment.delete({
-      where: { id },
+      where: { id: Number(id) },
     });
   } catch (error) {
     throw new Error('Failed to delete appointment.');
