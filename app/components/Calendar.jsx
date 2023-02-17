@@ -177,14 +177,14 @@ export default function Calendar() {
               </button>
             </div>
           </div>
-          <section className="mt-12 md:mt-0 md:pl-14 md:text-xl w-max">
+          <section className="mt-12 md:mt-0 md:pl-8 md:text-xl flex flex-col m-auto md:m-0">
             <h2 className="font-semibold text-gray-900">
               Schedule for{' '}
               <time dateTime={format(selectedDay, 'yyyy-MM-dd')}>
-                {format(selectedDay, 'MMM dd, yyy')}
+                {format(selectedDay, 'E MMM dd, yyy')}
               </time>
             </h2>
-            <ol className="mt-4 space-y-1 md:text-sm leading-6 text-gray-500">
+            <ol className="mt-2 space-y-1 md:text-sm leading-6 text-gray-500 grow">
               {selectedDayAppointments.length > 0 ? (
                 selectedDayAppointments.map((appointment) => (
                   <Appointment
@@ -197,7 +197,10 @@ export default function Calendar() {
                 <p>No appointments for today.</p>
               )}
             </ol>
-            <Link to="/appointments/add">
+            <Link
+              to="/appointments/add"
+              className="border-2 border-rose-500 text-center mt-6"
+            >
               <button>Add</button>
             </Link>
           </section>
