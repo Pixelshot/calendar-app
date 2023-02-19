@@ -17,7 +17,6 @@ export async function getAppointment(id) {
   try {
     return await prisma.appointment.findFirst({ where: { id: Number(id) } });
   } catch (error) {
-    console.log(error);
     throw error;
   }
 }
@@ -35,7 +34,6 @@ export async function addAppointment(appointmentData) {
       },
     });
   } catch (error) {
-    console.log(error);
     throw new Error('Unable to add Appointment');
   }
 }
@@ -67,5 +65,3 @@ export async function deleteAppointment(id) {
     throw new Error('Failed to delete appointment.');
   }
 }
-
-// TODO: Remove console.logs()

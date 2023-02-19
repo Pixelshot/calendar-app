@@ -22,6 +22,7 @@ import {
 import { useState, useEffect } from 'react';
 import Appointment from '~/components/Appointment';
 import { Link, useLoaderData } from '@remix-run/react';
+import { MdOutlinePostAdd } from 'react-icons/md';
 
 export function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -160,7 +161,7 @@ export default function Calendar() {
                         {appointments.some((appointment) =>
                           isSameDay(parseISO(appointment.start_date), day)
                         ) && (
-                          <div className="w-1 h-1 rounded-full bg-sky-500"></div>
+                          <div className="w-1 h-1 rounded-full bg-teal-500"></div>
                         )}
                       </div>
                     </div>
@@ -199,9 +200,9 @@ export default function Calendar() {
             </ol>
             <Link
               to="/appointments/add"
-              className="border-2 border-rose-500 text-center mt-6"
+              className="text-center mt-6 hover:border-rounded-lg"
             >
-              <button>Add</button>
+              <MdOutlinePostAdd className="mx-auto my-1 w-40 h-14 hover:shadow-2xl hover:border-2 hover:border-black  hover:rounded-lg" />
             </Link>
           </section>
         </div>
@@ -219,18 +220,3 @@ let colStartClasses = [
   'col-start-6',
   'col-start-7',
 ];
-
-// TODO:
-// 1. Adjust maximum height of Calendar because certain dates have more numbers ✅
-// 2. Decide on font size ✅
-// 3. Spacing between the 3 months might be too much on small and medium. Might want to reduce the gap ✅
-// 4. Need to push arrows a little bit more to the sides. Might need to reconfigure custom fr in tailwind settings ✅
-// 5. Create Time component ✅
-// 6. Fonts on the other side needs to be bigger ✅
-// 7. Connect to Database ✅
-// 8. Change Meeting to Appointment ✅
-// 9. Create add with Form ✅
-// 10. List down appointments of the day ✅
-// 11. Implement CRUD ✅
-// 12. Figure out what to do with the seasonal background image ✅
-// 13. Clean up code before deployment
