@@ -62,7 +62,7 @@ export default function Calendar() {
   //   return () => clearInterval(timeInterval);
   // }, []);
   return (
-    <div className="md:grid h-screen w-screen place-items-center max-md:pt-4">
+    <div className="md:grid h-[90vh] w-screen place-items-center max-md:pt-4">
       <div className="px-4 mx-auto sm:px-7 md:max-w-6xl md:px-6">
         <div className="md:grid md:grid-cols-3 lg:grid-cols-4 md:divide-x md:divide-gray-200">
           <div className="md:pr-10 col-span-2 lg:col-span-3">
@@ -202,7 +202,10 @@ export default function Calendar() {
               to="/appointments/add"
               className="text-center mt-6 hover:border-rounded-lg"
             >
-              <MdOutlinePostAdd className="mx-auto my-1 w-40 h-14 hover:shadow-2xl hover:border-2 hover:border-black  hover:rounded-lg" />
+              <MdOutlinePostAdd
+                className="mx-auto my-1 w-40 h-14 hover:shadow-2xl hover:border-2 hover:border-black  hover:rounded-lg"
+                alt="add"
+              />
             </Link>
           </section>
         </div>

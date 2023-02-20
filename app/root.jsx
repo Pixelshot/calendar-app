@@ -2,6 +2,7 @@ import { Link, Outlet, useCatch } from '@remix-run/react';
 
 import Document from '~/components/util/Document';
 import Error from '~/components/util/Error';
+import Footer from '~/components/util/Footer';
 import styles from './styles/app.css';
 
 export const meta = () => ({
@@ -14,6 +15,7 @@ export default function App() {
   return (
     <Document title="eCalendar App">
       <Outlet />
+      <Footer />
     </Document>
   );
 }
